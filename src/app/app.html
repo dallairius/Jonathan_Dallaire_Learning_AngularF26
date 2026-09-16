@@ -1,1 +1,6 @@
 <h1> Hello {{name}} {{lastName}}</h1>
+
+@for (delivery of deliveryList; track delivery.id){
+  <h3>{{delivery.id}}</h3>
+  <p>{{delivery.name}}</p>
+}
