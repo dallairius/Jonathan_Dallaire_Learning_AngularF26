@@ -1,6 +1,10 @@
-<h1> Hello {{name}} {{lastName}}</h1>
+<h1> Welcome to taco orders !</h1>
 
-@for (delivery of deliveryList; track delivery.id){
-  <h3>{{delivery.id}}</h3>
-  <p>{{delivery.name}}</p>
+@for (taco of tacoList; track taco.orderId){
+  <h3>{{taco.customerName}}</h3>
+  @if(taco.combo){<p>this order is a combo</p>}
+  <p>{{taco.howMany}}</p>
+  <p>{{taco.whichProtein}}</p>
+}@empty{
+  <h3>No items found</h3>
 }

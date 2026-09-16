@@ -1,6 +1,6 @@
 export interface Tacos {
   orderId: number;
-  toppings: string;
+  customerName: string;
   combo:boolean;
   howMany:number|string;
   whichProtein?:string;
