@@ -1,5 +1,8 @@
-<div>
+<div (click)="toggle()">
 <h3>{{ orderInput().customerName }}</h3>
+
+  @if(expanded){
+
   <p>{{ orderInput().howMany }} tacos</p>
 
   @if(orderInput().combo){
@@ -14,5 +17,7 @@
     @case ("chicken"){Chicken}
     @case ("pork"){Pork}
     @default{}
+  }
+
   }
 </div>

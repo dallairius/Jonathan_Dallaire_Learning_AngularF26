@@ -1,5 +1,6 @@
-import {Component, input} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {Tacos} from '../Shared/Models/tacos';
+import {ContentEvent} from '../content-event';
 
 
 
@@ -11,4 +12,12 @@ import {Tacos} from '../Shared/Models/tacos';
 })
 export class OrderListItem {
   orderInput = input.required<Tacos>();
+  expanded = false;
+  opened = output<Tacos>();
+
+  toggle(): void {
+    this.opened.emit(this.orderInput());
+
+    this.expanded = !this.expanded;
+  }
 }
