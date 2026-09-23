@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Tacos } from './Shared/Models/tacos'
+import {OrderList} from './order-list/order-list';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, OrderList],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

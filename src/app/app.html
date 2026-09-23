@@ -1,10 +1,3 @@
 <h1> Welcome to taco orders !</h1>
 
-@for (taco of tacoList; track taco.orderId){
-  <h3>{{taco.customerName}}</h3>
-  @if(taco.combo){<p>this order is a combo</p>}
-  <p>{{taco.howMany}}</p>
-  <p>{{taco.whichProtein}}</p>
-}@empty{
-  <h3>No items found</h3>
-}
+<app-order-list/>

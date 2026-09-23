@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, input} from '@angular/core';
+import {Tacos} from '../Shared/Models/tacos';
+
+let orders = input.required<Tacos>();
 
 @Component({
   imports: [],
