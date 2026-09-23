@@ -1,1 +1,5 @@
-<p>order-list works!</p>
+@for(order of orderArray; track order.orderId){
+ <app-order-list-item [orderInput] = "order"/>
+}@empty{
+  no orders to show
+}

@@ -1,1 +1,18 @@
-<p>order-list-item works!</p>
+<div>
+<h3>{{ orderInput().customerName }}</h3>
+  <p>{{ orderInput().howMany }} tacos</p>
+
+  @if(orderInput().combo){
+    <p>Is a combo</p>
+  }@else{
+    <p>Is not a combo</p>
+  }
+
+
+  @switch(orderInput().whichProtein){
+    @case ("beef"){Beef}
+    @case ("chicken"){Chicken}
+    @case ("pork"){Pork}
+    @default{}
+  }
+</div>
