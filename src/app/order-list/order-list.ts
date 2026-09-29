@@ -2,6 +2,7 @@ import {Component, computed, effect, inject} from '@angular/core';
 import {Tacos} from '../Shared/Models/tacos';
 import {OrderListItem} from '../order-list-item/order-list-item';
 import {TacoService} from '../services/taco-service';
+import {ContentEvent} from '../content-event';
 
 
 
@@ -32,5 +33,9 @@ export class OrderList {
     effect(() => {
       console.log('Orders on the screen: ', this.orderCount());
     });
+  }
+
+  onOrderOpened($event: ContentEvent){
+
   }
 }

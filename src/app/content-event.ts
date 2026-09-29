@@ -1,6 +1,6 @@
 export interface ContentEvent {
   id: number;
-  expanded: false;
+  action: 'opened' | 'favourited';
 
 
 }
