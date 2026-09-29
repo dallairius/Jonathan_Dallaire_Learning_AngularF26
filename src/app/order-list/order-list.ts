@@ -26,6 +26,7 @@ export class OrderList {
   ]*/
 
   comboOrders = computed(() => this.orderArray().filter(b => b.combo))
+  comboCount = computed(() => this.comboOrders().length)
 
   orderCount = computed(() => this.orderArray().length)
 

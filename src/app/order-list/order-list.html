@@ -5,7 +5,7 @@
 }@empty{
   no orders to show
 }
-<p>Combo orders</p>
+<p>Combo orders: {{comboCount}}</p>
 @for(order of comboOrders(); track order.orderId){
   <app-order-list-item [orderInput] = "order"/>
 }@empty{

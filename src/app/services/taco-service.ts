@@ -15,4 +15,8 @@ export class TacoService {
   addOrder(o: Tacos){
     this.orders.update(list => [...list,o]);
   }
+
+  removeOrder(o: Tacos){
+    this.orders.update(list => list.filter(o => o.orderId !== o.orderId));
+  }
 }
