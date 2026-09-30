@@ -11,12 +11,13 @@ export class TacoService {
   ])
 
   orderArray = this.orders.asReadonly();
-
   addOrder(o: Tacos){
     this.orders.update(list => [...list,o]);
   }
 
-  removeOrder(o: Tacos){
-    this.orders.update(list => list.filter(o => o.orderId !== o.orderId));
+  removeOrder(o: Tacos | undefined){
+    if(typeof o === "object") {
+      this.orders.update(list => list.filter(t => t.orderId !== o.orderId));
+    }
   }
 }
