@@ -36,7 +36,7 @@ export class OrderList {
     });
   }
 
-  onOrderOpened($event: ContentEvent){
-
+  onOrderOpened(event: ContentEvent ){
+    console.log(event);
   }
 }

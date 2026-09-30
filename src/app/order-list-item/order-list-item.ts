@@ -17,6 +17,7 @@ export class OrderListItem {
   isOpened = output<ContentEvent>();
 
   toggle(): void {
+    this.contentEvent.id = this.orderInput().orderId;
     this.isOpened.emit(this.contentEvent);
 
     this.expanded = !this.expanded;
