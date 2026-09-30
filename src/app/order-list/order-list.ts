@@ -31,8 +31,7 @@ export class OrderList {
     });
   }
 
-  onOrderOpened(event: ContentEvent ){
-    console.log(event);
+  onOrderRemoved(event: ContentEvent ){
     this.tacoService.removeOrder(this.orderArray().find(t => t.orderId == event.id));
   }
 }

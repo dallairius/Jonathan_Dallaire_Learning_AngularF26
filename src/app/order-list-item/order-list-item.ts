@@ -14,13 +14,14 @@ export class OrderListItem {
   orderInput = input.required<Tacos>();
   expanded = false;
   contentEvent: ContentEvent = {id:0,action:"opened"};
-  isOpened = output<ContentEvent>();
+  isRemoved = output<ContentEvent>();
 
   toggle(): void {
-    this.contentEvent.id = this.orderInput().orderId;
-    this.isOpened.emit(this.contentEvent);
-
     this.expanded = !this.expanded;
+  }
+  delete(): void{
+    this.contentEvent.id = this.orderInput().orderId;
+    this.isRemoved.emit(this.contentEvent);
   }
 
 }

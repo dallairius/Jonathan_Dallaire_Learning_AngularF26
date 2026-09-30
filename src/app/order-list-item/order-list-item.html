@@ -1,4 +1,4 @@
-<div (click)="toggle()">
+<div>
 <h3>{{ orderInput().customerName }}</h3>
 
   @if(expanded){
@@ -18,6 +18,10 @@
     @case ("pork"){Pork}
     @default{}
   }
+    <br>
+
 
   }
+  <button (click)="toggle()">Expand</button>
+  <button (click)="delete()">Remove</button>
 </div>
