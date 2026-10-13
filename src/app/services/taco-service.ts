@@ -1,5 +1,6 @@
-import {Injectable, Service, signal} from '@angular/core';
+import {inject, Injectable, Service, signal} from '@angular/core';
 import {Tacos} from '../Shared/Models/tacos';
+import {APP_CONFIG} from '../taco-config';
 
 @Injectable({ providedIn: 'root'})
 export class TacoService {
@@ -20,4 +21,7 @@ export class TacoService {
       this.orders.update(list => list.filter(t => t.orderId !== o.orderId));
     }
   }
+
+ private config = inject(APP_CONFIG)
+  apiUrl = this.config.apiBaseUrl
 }

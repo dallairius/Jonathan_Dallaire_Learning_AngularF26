@@ -19,6 +19,7 @@ export class OrderList {
   private tacoService = inject(TacoService);
 
   orderArray = this.tacoService.orderArray
+  apiTest = this.tacoService.apiUrl
 
   comboOrders = computed(() => this.orderArray().filter(b => b.combo))
   comboCount = computed(() => this.comboOrders().length)
