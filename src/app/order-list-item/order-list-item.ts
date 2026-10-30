@@ -1,11 +1,14 @@
 import {Component, input, output, signal} from '@angular/core';
 import {Tacos} from '../Shared/Models/tacos';
 import {ContentEvent} from '../content-event';
+import {RouterLink} from '@angular/router';
 
 
 
 @Component({
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   selector: 'app-order-list-item',
   styleUrl: './order-list-item.css',
   templateUrl: './order-list-item.html',

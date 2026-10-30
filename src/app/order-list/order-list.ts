@@ -3,13 +3,15 @@ import {Tacos} from '../Shared/Models/tacos';
 import {OrderListItem} from '../order-list-item/order-list-item';
 import {TacoService} from '../services/taco-service';
 import {ContentEvent} from '../content-event';
+import {RouterLink} from '@angular/router';
 
 
 
 
 @Component({
   imports: [
-    OrderListItem
+    OrderListItem,
+    RouterLink
   ],
   selector: 'app-order-list',
   styleUrl: './order-list.css',

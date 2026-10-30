@@ -20,8 +20,8 @@
   }
     <br>
 
-
-  }
-  <button (click)="toggle()">Expand</button>
+    <button (click)="toggle()">Show Less</button>
+  }@else{<button (click)="toggle()">Expand</button>}
   <button (click)="delete()">Remove</button>
+  <a [routerLink]="['/orders',orderInput().orderId]">Details</a>
 </div>

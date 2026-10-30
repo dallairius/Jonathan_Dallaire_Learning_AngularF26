@@ -1,0 +1,8 @@
+@if(order(); as o){
+  <h2>{{ o.customerName}}</h2>
+  <p>The order consists of
+    {{o.howMany}} {{o.whichProtein}} tacos</p>
+  @if(o.combo){
+    <p>and it is a combo</p>
+  }@else{<p>and it is not a combo</p>}
+}@else{<p>Order not found</p>}
