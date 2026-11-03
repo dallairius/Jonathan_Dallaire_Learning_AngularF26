@@ -16,5 +16,5 @@ export class TacoDetail {
   private tacoService = inject(TacoService);
 
   order = computed(() =>
-  this.tacoService.orderArray().find(b => b.orderId === Number(this.id())))
+  this.tacoService.orderArray().find(o => o.orderId === Number(this.id())))
 }

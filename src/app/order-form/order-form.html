@@ -1,6 +1,5 @@
 <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
 
-
   @if(orderForm.controls.customerName.touched &&
     orderForm.controls.customerName.invalid){
     <p class="error">Name is required and
@@ -41,6 +40,9 @@
   </select>
   <br>
 
-
+@if(order()){
+  <button type="submit" [disabled]="orderForm.invalid">Edit Order</button>
+}@else{
   <button type="submit" [disabled]="orderForm.invalid">Add Order</button>
+  }
 </form>

@@ -7,5 +7,7 @@ export const routes: Routes = [
   {path: 'orders',component: OrderList},
   {path: 'orders/:id', component: TacoDetail},
   {path: '', component:OrderList},
-  {path:'orderForm',component: OrderForm}
+  {path:'orderForm',component: OrderForm},
+  {path:'orderForm/:id',component: OrderForm}
+
 ];

@@ -24,4 +24,6 @@
   }@else{<button (click)="toggle()">Expand</button>}
   <button (click)="delete()">Remove</button>
   <a [routerLink]="['/orders',orderInput().orderId]">Details</a>
+  <a [routerLink]="['/orderForm',orderInput().orderId]">Edit</a>
+
 </div>
