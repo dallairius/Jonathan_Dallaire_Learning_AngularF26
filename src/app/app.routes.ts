@@ -1,8 +1,11 @@
 import { Routes } from '@angular/router';
 import {OrderList} from './order-list/order-list';
 import {TacoDetail} from './taco-detail/taco-detail';
+import {OrderForm} from './order-form/order-form';
 
 export const routes: Routes = [
   {path: 'orders',component: OrderList},
-  {path: 'orders/:id', component: TacoDetail}
+  {path: 'orders/:id', component: TacoDetail},
+  {path: '', component:OrderList},
+  {path:'orderForm',component: OrderForm}
 ];
