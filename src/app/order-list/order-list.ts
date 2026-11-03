@@ -4,6 +4,7 @@ import {OrderListItem} from '../order-list-item/order-list-item';
 import {TacoService} from '../services/taco-service';
 import {ContentEvent} from '../content-event';
 import {RouterLink} from '@angular/router';
+import {Guard} from '../services/guard';
 
 
 
@@ -19,14 +20,19 @@ import {RouterLink} from '@angular/router';
 })
 export class OrderList {
   private tacoService = inject(TacoService);
+  private guard = inject(Guard);
+
+  canEdit = computed(() => this.guard.guardEnabled());
 
   orderArray = this.tacoService.orderArray
   apiTest = this.tacoService.apiUrl
 
+
   comboOrders = computed(() => this.orderArray().filter(b => b.combo))
   comboCount = computed(() => this.comboOrders().length)
-
   orderCount = computed(() => this.orderArray().length)
+
+
 
   constructor() {
     effect(() => {
@@ -36,5 +42,10 @@ export class OrderList {
 
   onOrderRemoved(event: ContentEvent ){
     this.tacoService.removeOrder(this.orderArray().find(t => t.orderId == event.id));
+  }
+
+  changeEdit(){
+    this.guard.onClick()
+    console.log(this.guard.guardEnabled())
   }
 }

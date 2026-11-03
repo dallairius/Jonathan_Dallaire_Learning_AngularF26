@@ -37,12 +37,7 @@ export class OrderForm {
       this.order()?.whichProtein = value.whichProtein*/
 
     }else {
-      /*this.service.addOrder({
-      orderId: Date.now(),
-      combo: value.combo,
-      howMany: value.howMany,
-      whichProtein: value.whichProtein,
-      customerName: value.customerName})*/
+      /*this.service.addOrder({id, ...value})*/
     }
     this.orderForm.reset({})
   }
