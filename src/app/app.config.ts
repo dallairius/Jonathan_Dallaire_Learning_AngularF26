@@ -4,14 +4,16 @@ import { routes } from './app.routes';
 import {APP_CONFIG, TacoConfig} from './taco-config';
 import {TacoService} from './services/taco-service';
 import {MockService} from './services/mock-service';
+import { provideHttpClient } from "@angular/common/http";
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    provideHttpClient(),
     provideRouter(routes,withComponentInputBinding()),
     {provide: APP_CONFIG,
       useValue: {
-        apiBaseUrl: 'https://placeholder.example.com/api',
+        apiBaseUrl: 'https://www.givefood.org.uk/api/2/foodbanks/',
         defaultCategory: 'all'
     }},
     //{provide: TacoService, useClass: MockService}

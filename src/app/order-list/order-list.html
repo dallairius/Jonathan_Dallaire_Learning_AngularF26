@@ -5,7 +5,6 @@
   }@else{Edit mode Off}
 </nav>
 @for(order of orderArray(); track order.orderId){
-
   <app-order-list-item
     [orderInput] = "order"
     (isRemoved)="onOrderRemoved($event)"/>
@@ -19,4 +18,11 @@
   <app-order-list-item [orderInput] = "order"/>
 }@empty{
   no combo orders to show
+}
+
+@for (FoodBanks of foodBankList(); track FoodBanks.id){
+  {{FoodBanks.name}}
+  {{FoodBanks.address}}
+}@empty{
+  No posts available
 }

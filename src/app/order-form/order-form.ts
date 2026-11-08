@@ -28,7 +28,6 @@ export class OrderForm {
     howMany:['3',[Validators.required,whiteSpaceValidator()]],
     whichProtein:['beef',Validators.required]
 
-  },{validators: [beefAmountValidator()]
   })
   private service = inject(TacoService);
 
@@ -78,7 +77,7 @@ export function whiteSpaceValidator(): ValidatorFn{
   }
 }
 
-export function beefAmountValidator(): ValidatorFn{
+/*export function beefAmountValidator(): ValidatorFn{
   return(form: FormGroup): ValidationErrors | null => {
 
     const isBeef = form.get("whichProtein").value;
@@ -87,4 +86,4 @@ export function beefAmountValidator(): ValidatorFn{
 
     return wrongAmount? {tooMuchBeef: true} : null;
   }
-}
+}*/
