@@ -4,12 +4,13 @@ import { routes } from './app.routes';
 import {APP_CONFIG, TacoConfig} from './taco-config';
 import {TacoService} from './services/taco-service';
 import {MockService} from './services/mock-service';
-import { provideHttpClient } from "@angular/common/http";
+import {provideHttpClient, withInterceptors} from "@angular/common/http";
+import {loadingInterceptorInterceptor} from './loading-interceptor-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([loadingInterceptorInterceptor])),
     provideRouter(routes,withComponentInputBinding()),
     {provide: APP_CONFIG,
       useValue: {

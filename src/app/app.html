@@ -1,3 +1,6 @@
 <h1> Welcome to taco orders !</h1>
+@if(loadingService.isLoading()){
+  Page loading...
+}
 
 <router-outlet/>

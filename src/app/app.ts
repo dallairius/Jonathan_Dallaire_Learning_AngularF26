@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Tacos } from './Shared/Models/tacos'
 import {OrderList} from './order-list/order-list';
 import {Guard} from './services/guard';
+import {LoadingService} from './services/loading-service';
 
 @Component({
   imports: [RouterOutlet, OrderList],
@@ -12,5 +13,5 @@ import {Guard} from './services/guard';
 })
 export class App {
   protected readonly title = signal('Jonathan-Dallaire-Learning-AngularF26');
-
+  loadingService = inject(LoadingService);
 }
