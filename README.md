@@ -1,5 +1,13 @@
 # JonathanDallaireLearningAngularF26
 
+I first made my project about taco orders because I taught there was a taco API but that API doesn't work very well.
+After looking around a little bit I found a Food Bank API that doesn't require any key and is pretty convenient to use.
+In the end I chose this API for convenience more than anything else.
+
+
+
+
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
 
 ## Development server
