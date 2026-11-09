@@ -5,7 +5,7 @@ import {APP_CONFIG, TacoConfig} from './taco-config';
 import {TacoService} from './services/taco-service';
 import {MockService} from './services/mock-service';
 import {provideHttpClient, withInterceptors} from "@angular/common/http";
-import {loadingInterceptorInterceptor} from './loading-interceptor-interceptor';
+import {loadingInterceptorInterceptor} from './Interceptors/loading-interceptor-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
