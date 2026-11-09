@@ -32,7 +32,7 @@
   <input formControlName="email" placeholder="realemail@gmail.com">
   <br>
 
-@if(order()){
+@if(order){
   <button type="submit" [disabled]="orderForm.invalid">Edit Order</button>
 }@else{
   <button type="submit" [disabled]="orderForm.invalid">Add Order</button>

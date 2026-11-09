@@ -49,13 +49,12 @@ export class OrderList {
 
   canEdit = computed(() => this.guard.guardEnabled());
 
-  orderArray = this.tacoService.orderArray
   apiTest = this.tacoService.apiUrl
 
 
-  comboOrders = computed(() => this.orderArray().filter(b => b.combo))
-  comboCount = computed(() => this.comboOrders().length)
-  orderCount = computed(() => this.orderArray().length)
+  //comboOrders = computed(() => this.orderArray().filter(b => b.combo))
+  //comboCount = computed(() => this.comboOrders().length)
+  orderCount = computed(() => this.foodBankList().length)
 
 
 
@@ -66,8 +65,20 @@ export class OrderList {
   }
 
   onOrderRemoved(event: ContentEvent ){
-    this.tacoService.removeOrder(this.orderArray().find(t => t.orderId == event.id));
+    this.removeOrder(this.foodBankList().find(t => t.id == event.id));
   }
+
+  removeOrder(o: FoodBanks | undefined){
+    if(typeof o === "object") {
+      this.foodBankList.update(list => list.filter(t => t.id !== o.id));
+    }
+  }
+
+  updateContent(updated: FoodBanks) {
+    this.foodBankList.update(list => list.map(f => f.id === updated.id ? updated : f));
+  }
+
+
 
   changeEdit(){
     this.guard.onClick()

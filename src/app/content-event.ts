@@ -1,5 +1,5 @@
 export interface ContentEvent {
-  id: number;
+  id: string;
   action: 'opened' | 'favourited';
 
 

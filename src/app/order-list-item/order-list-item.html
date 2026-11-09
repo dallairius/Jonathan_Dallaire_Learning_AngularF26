@@ -14,7 +14,9 @@
     <br>
 
     <button (click)="toggle()">Show Less</button>
+
   }@else{<button (click)="toggle()">Expand</button>}
+  <button (click)="delete()">Remove</button>
   <a [routerLink]="['/orders',orderInput().id]">Details</a>
   <a [routerLink]="['/orderForm',orderInput().id]">Edit</a>
 

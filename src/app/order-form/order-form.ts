@@ -23,6 +23,8 @@ import {FoodBanks} from '../Shared/Models/food-banks';
 export class OrderForm {
   id = input<string>();
 
+
+
   private fb = inject(FormBuilder);
   orderForm = this.fb.group({
     name: ['',[Validators.required,Validators.minLength(4)]],
@@ -36,9 +38,13 @@ export class OrderForm {
   foodBankList = signal<FoodBanks[]>([]);
   errorMessage = signal<string>('');
 
+
+
   ngOnInit(): void {
     this.orderForm.patchValue({
+      name: this.order?.name,
     })
+
 
     this.api.getFoodBanks().subscribe({
       next: (data) => {
@@ -51,14 +57,13 @@ export class OrderForm {
     })
   }
 
-  order = computed(() =>
-      this.foodBankList().find(o => o.id === this.id()))
-
+  order =
+    this.foodBankList().find(o => o.id === this.id());
   onSubmit(): void{
     if(this.orderForm.invalid) return;
 
     const value = this.orderForm.getRawValue();
-    if(this.order()) {
+    if(this.order) {
       /*this.order()?.customerName = value.customerName
       this.order()?.combo = value.combo
       this.order()?.howMany = value.howMany

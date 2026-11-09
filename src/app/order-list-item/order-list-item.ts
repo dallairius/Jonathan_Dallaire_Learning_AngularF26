@@ -17,14 +17,14 @@ import {FoodBanks} from '../Shared/Models/food-banks';
 export class OrderListItem {
   orderInput = input.required<FoodBanks>();
   expanded = false;
-  contentEvent: ContentEvent = {id:0,action:"opened"};
+  contentEvent: ContentEvent = {id:"0",action:"opened"};
   isRemoved = output<ContentEvent>();
 
   toggle(): void {
     this.expanded = !this.expanded;
   }
   delete(): void{
-    this.contentEvent.id = Number(this.orderInput().id);
+    this.contentEvent.id = this.orderInput().id;
     this.isRemoved.emit(this.contentEvent);
   }
 
