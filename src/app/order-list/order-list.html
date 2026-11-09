@@ -1,9 +1,16 @@
 <nav>
   <button (click)="changeEdit()">Edit mode</button>
+  <button (click)="load()">Reload</button>
   @if(canEdit()){
     Edit mode On
   }@else{Edit mode Off}
 </nav>
+@if(loading()){
+  <p>Loading food banks...</p>
+}@else if(error()){
+  <p class ="error">Could not load food banks </p>
+}@else{
+
 @for(FoodBank of foodBankList(); track FoodBank.id){
   <app-order-list-item
     [orderInput] = "FoodBank"
@@ -14,4 +21,4 @@
 <a [routerLink]="['/orderForm']">Add New Order</a>
 <p>Combo orders: {{comboCount()}}</p>
 <p>Api Test Url: {{apiTest}}</p>
-
+}

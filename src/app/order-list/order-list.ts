@@ -7,6 +7,7 @@ import {RouterLink} from '@angular/router';
 import {Guard} from '../services/guard';
 import {APIService} from '../services/apiservice';
 import {FoodBanks} from '../Shared/Models/food-banks';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 
 
@@ -27,14 +28,20 @@ export class OrderList {
 
   foodBankList = signal<FoodBanks[]>([]);
   errorMessage = signal<string>('');
+  loading = signal(false);
+  error = signal<string | null>(null);
 
-  ngOnInit(): void {
+
+  load(): void {
+    this.loading.set(true); this.error.set(null);
     this.api.getFoodBanks().subscribe({
       next: (data) => {
         this.foodBankList.set(data);
+        this.loading.set(false);
       },
       error: (err) => {
         this.errorMessage.set('Failed to load FoodBanks.');
+        this.loading.set(false);
         console.error(err);
       }
     })
