@@ -1,29 +1,21 @@
 <div>
-<h3>{{ orderInput().customerName }}</h3>
+<h3>{{ orderInput().name }}</h3>
 
   @if(expanded){
 
-  <p>{{ orderInput().howMany }} tacos</p>
-
-  @if(orderInput().combo){
-    <p>Is a combo</p>
-  }@else{
-    <p>Is not a combo</p>
-  }
+  <p>{{ orderInput().address }}</p>
+  <p>{{ orderInput().email }}</p>
+  <p>{{ orderInput().phone }}</p>
 
 
-  @switch(orderInput().whichProtein){
-    @case ("beef"){Beef}
-    @case ("chicken"){Chicken}
-    @case ("pork"){Pork}
-    @default{}
-  }
+
+
+
     <br>
 
     <button (click)="toggle()">Show Less</button>
   }@else{<button (click)="toggle()">Expand</button>}
-  <button (click)="delete()">Remove</button>
-  <a [routerLink]="['/orders',orderInput().orderId]">Details</a>
-  <a [routerLink]="['/orderForm',orderInput().orderId]">Edit</a>
+  <a [routerLink]="['/orders',orderInput().id]">Details</a>
+  <a [routerLink]="['/orderForm',orderInput().id]">Edit</a>
 
 </div>

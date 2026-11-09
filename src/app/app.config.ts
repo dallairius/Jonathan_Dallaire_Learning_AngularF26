@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes,withComponentInputBinding()),
     {provide: APP_CONFIG,
       useValue: {
-        apiBaseUrl: 'https://www.givefood.org.uk/api/2/foodbanks/',
+        apiBaseUrl: 'https://www.givefood.org.uk/api/2/foodbanks',
         defaultCategory: 'all'
     }},
     //{provide: TacoService, useClass: MockService}

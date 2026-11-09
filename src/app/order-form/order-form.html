@@ -1,43 +1,35 @@
 <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
 
-  @if(orderForm.controls.customerName.touched &&
-    orderForm.controls.customerName.invalid){
+  @if(orderForm.controls.name.touched &&
+    orderForm.controls.name.invalid){
     <p class="error">Name is required and
       must have at least 4 characters</p>
-  }@else{<p>Your Name ?</p>}
-  <input formControlName="customerName" placeholder="Name" />
+  }@else{<p>What is the name of the food bank ?</p>}
+  <input formControlName="name" placeholder="Name" />
   <br>
 
 
-  @if(orderForm.controls.combo.touched &&
-  orderForm.controls.combo.invalid){
-    <p class="error">Please pick an option</p>
-  }@else{<p>is the order a combo ?</p>}
-  <select formControlName="combo">
-    <option value="true">This order is a combo</option>
-    <option value="false">This order is not a combo</option>
-  </select>
+  @if(orderForm.controls.address.touched &&
+  orderForm.controls.address.invalid){
+    <p class="error">Please enter an address</p>
+  }@else{<p>What is the address of the food bank?</p>}
+  <input formControlName="address" placeholder="1234 real street">
   <br>
 
 
-  @if(orderForm.controls.howMany.touched &&
-  orderForm.controls.howMany.invalid){
-    <p class="error">Please select how many taco in order</p>
-  }@else{<p>How many taco in order ?</p>}
-  <input formControlName="howMany" placeholder="How many"/>
+  @if(orderForm.controls.phone.touched &&
+  orderForm.controls.phone.invalid){
+    <p class="error">Please enter a phone number</p>
+  }@else{<p>What is the phone number of the food bank?</p>}
+  <input formControlName="phone" placeholder="(XXX) XXX-XXXX"/>
   <br>
 
 
-  @if(orderForm.controls.whichProtein.touched &&
-  orderForm.controls.whichProtein.invalid){
-    <p class="error">Please select a protein</p>
-  }@else{<p>Which protein in tacos ?</p>}
-  <select formControlName="whichProtein">
-    <option value="beef">Beef</option>
-    <option value="pork">Pork</option>
-    <option value="chicken">Chicken</option>
-    <option value="veggie">Veggie</option>
-  </select>
+  @if(orderForm.controls.email.touched &&
+  orderForm.controls.email.invalid){
+    <p class="error">Please enter email address</p>
+  }@else{<p>What is the email address of the food bank ?</p>}
+  <input formControlName="email" placeholder="realemail@gmail.com">
   <br>
 
 @if(order()){

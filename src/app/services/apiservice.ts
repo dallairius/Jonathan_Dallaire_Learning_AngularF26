@@ -11,11 +11,11 @@ export class APIService {
   private config = inject(APP_CONFIG);
   private url = `${this.config.apiBaseUrl}`
 
-  getById(id: string): Observable<Tacos>{
-    return this.http.get<Tacos>(`${this.url}/${id}`);
+  getById(id: string): Observable<FoodBanks>{
+    return this.http.get<FoodBanks>(`${this.url}/${id}`);
   }
 
   getFoodBanks(): Observable<FoodBanks[]>{
-    return this.http.get<FoodBanks[]>(`${this.url}`);
+    return this.http.get<FoodBanks[]>(`${this.url}/`);
   }
 }

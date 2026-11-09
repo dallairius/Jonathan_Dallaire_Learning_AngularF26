@@ -1,6 +1,9 @@
-import {Component, computed, inject, input} from '@angular/core';
+import {Component, computed, inject, input, signal} from '@angular/core';
 import {TacoService} from '../services/taco-service';
 import {OrderListItem} from '../order-list-item/order-list-item';
+import {APIService} from '../services/apiservice';
+import {OrderList} from '../order-list/order-list';
+import {FoodBanks} from '../Shared/Models/food-banks';
 
 @Component({
   imports: [
@@ -13,8 +16,23 @@ import {OrderListItem} from '../order-list-item/order-list-item';
 export class TacoDetail {
   id = input.required<string>();
 
-  private tacoService = inject(TacoService);
+  private api = inject(APIService);
+
+  foodBankList = signal<FoodBanks[]>([]);
+  errorMessage = signal<string>('');
+
+  ngOnInit(): void {
+    this.api.getFoodBanks().subscribe({
+      next: (data) => {
+        this.foodBankList.set(data);
+      },
+      error: (err) => {
+        this.errorMessage.set('Failed to load FoodBanks.');
+        console.error(err);
+      }
+    })
+  }
 
   order = computed(() =>
-  this.tacoService.orderArray().find(o => o.orderId === Number(this.id())))
+  this.foodBankList().find(o => o.id === this.id()))
 }

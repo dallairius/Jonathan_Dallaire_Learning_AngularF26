@@ -1,4 +1,4 @@
-import {Component, computed, inject, input} from '@angular/core';
+import {Component, computed, inject, input, signal} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,8 @@ import {
   Validators
 } from '@angular/forms';
 import {TacoService} from '../services/taco-service';
+import {APIService} from '../services/apiservice';
+import {FoodBanks} from '../Shared/Models/food-banks';
 
 @Component({
   imports: [
@@ -23,16 +25,34 @@ export class OrderForm {
 
   private fb = inject(FormBuilder);
   orderForm = this.fb.group({
-    customerName: ['Name',[Validators.required,Validators.minLength(4)]],
-    combo: ['',Validators.required],
-    howMany:['3',[Validators.required,whiteSpaceValidator()]],
-    whichProtein:['beef',Validators.required]
+    name: ['',[Validators.required,Validators.minLength(4)]],
+    address: ['',Validators.required],
+    phone:['',[Validators.required,whiteSpaceValidator()]],
+    email:['',Validators.required]
 
   })
-  private service = inject(TacoService);
+  private api = inject(APIService);
+
+  foodBankList = signal<FoodBanks[]>([]);
+  errorMessage = signal<string>('');
+
+  ngOnInit(): void {
+    this.orderForm.patchValue({
+    })
+
+    this.api.getFoodBanks().subscribe({
+      next: (data) => {
+        this.foodBankList.set(data);
+      },
+      error: (err) => {
+        this.errorMessage.set('Failed to load FoodBanks.');
+        console.error(err);
+      }
+    })
+  }
 
   order = computed(() =>
-      this.service.orderArray().find(o => o.orderId === Number(this.id())))
+      this.foodBankList().find(o => o.id === this.id()))
 
   onSubmit(): void{
     if(this.orderForm.invalid) return;
@@ -48,17 +68,6 @@ export class OrderForm {
       /*this.service.addOrder({id, ...value})*/
     }
     this.orderForm.reset({})
-  }
-
-  ngOnInit(){
-    this.orderForm.patchValue({
-      customerName: this.order()?.customerName,
-      //combo: this.order()?.combo,
-      //howMany: this.order()?.howMany,
-      whichProtein: this.order()?.whichProtein
-
-
-    })
   }
 }
 
@@ -76,14 +85,3 @@ export function whiteSpaceValidator(): ValidatorFn{
     return isWhiteSpace ? {allWhiteSpaces:true}:null;
   }
 }
-
-/*export function beefAmountValidator(): ValidatorFn{
-  return(form: FormGroup): ValidationErrors | null => {
-
-    const isBeef = form.get("whichProtein").value;
-    const tacoAmount = form.get("howMany").value;
-    const wrongAmount = (tacoAmount > 10) && (isBeef == "beef");
-
-    return wrongAmount? {tooMuchBeef: true} : null;
-  }
-}*/
