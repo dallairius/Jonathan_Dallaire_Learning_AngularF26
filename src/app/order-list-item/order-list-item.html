@@ -1,10 +1,12 @@
 <div>
-<h3>{{ orderInput().name }}</h3>
+<h3>{{ orderInput().name | titlecase }}</h3>
 
   @if(expanded){
 
-  <p>{{ orderInput().address }}</p>
-  <p>{{ orderInput().email }}</p>
+  <p>{{ orderInput().address | lowercase }}</p>
+    <!--None of the other pipes fit so slice is used. Shows the first
+     256 character of the email address-->
+  <p>{{ orderInput().email | slice:0:256}}</p>
   <p>{{ orderInput().phone }}</p>
 
 

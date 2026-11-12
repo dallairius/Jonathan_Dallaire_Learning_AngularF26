@@ -3,12 +3,16 @@ import {Tacos} from '../Shared/Models/tacos';
 import {ContentEvent} from '../content-event';
 import {RouterLink} from '@angular/router';
 import {FoodBanks} from '../Shared/Models/food-banks';
+import {LowerCasePipe, SlicePipe, TitleCasePipe} from '@angular/common';
 
 
 
 @Component({
   imports: [
-    RouterLink
+    RouterLink,
+    TitleCasePipe,
+    LowerCasePipe,
+    SlicePipe
   ],
   selector: 'app-order-list-item',
   styleUrl: './order-list-item.css',
