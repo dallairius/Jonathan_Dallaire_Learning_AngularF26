@@ -31,7 +31,9 @@ export class OrderList {
   loading = signal(false);
   error = signal<string | null>(null);
 
-
+  ngOnInit(): void{
+    this.load();
+  }
   load(): void {
     this.loading.set(true); this.error.set(null);
     this.api.getFoodBanks().subscribe({

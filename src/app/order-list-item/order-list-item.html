@@ -7,7 +7,7 @@
     <!--None of the other pipes fit so slice is used. Shows the first
      256 character of the email address-->
   <p>{{ orderInput().email | slice:0:256}}</p>
-  <p>{{ orderInput().phone }}</p>
+  <p>{{ orderInput().phone | slice:1:11 | phonePipe:'No phone listed'}}</p>
 
 
 

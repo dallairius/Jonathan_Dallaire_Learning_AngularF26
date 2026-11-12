@@ -2,6 +2,7 @@
   <h2>{{o.name}}</h2>
   <p>{{o.address}}</p>
   <p>{{o.phone}}</p>
-  <p>{{o.email}}</p>
+  <!-- This lets the pipe add html instead of just transforming the string -->
+  <p [innerHTML]="o.email | bold"></p>
 }
 
