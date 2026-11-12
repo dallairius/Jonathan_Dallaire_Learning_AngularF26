@@ -5,6 +5,28 @@ After looking around a little bit I found a Food Bank API that doesn't require a
 In the end I chose this API for convenience more than anything else.
 
 
+Lazy Loading here is before and after chunk tables. Instead of storing everything
+in the main file, there is now multiples because they now load independently of 
+one another. The landing page stays eager because we want it to load immediately
+when someone gets on the page.
+
+Before:
+Initial chunk files | Names         |  Raw size | Estimated transfer size
+main-TZ2CDAA3.js    | main          | 317.20 kB |                84.01 kB
+styles-5INURTSO.css | styles        |   0 bytes |                 0 bytes
+
+After:
+Initial chunk files | Names         |  Raw size | Estimated transfer size
+chunk-CtoIhyRG.js   | -             | 180.11 kB |                52.51 kB
+main-LYJFUOHU.js    | main          |  96.87 kB |                25.19 kB
+styles-5INURTSO.css | styles        |   0 bytes |                 0 bytes
+
+                    | Initial total | 276.98 kB |                77.69 kB
+
+Lazy chunk files    | Names         |  Raw size | Estimated transfer size
+chunk-D8wO-YKx.js   | order-form    |  42.28 kB |                 9.66 kB
+chunk-BkqMcAwW.js   | taco-detail   |   1.31 kB |               708 bytes
+chunk-DgdmMVPg.js   | order-list    |  92 bytes |                92 bytes
 
 
 
