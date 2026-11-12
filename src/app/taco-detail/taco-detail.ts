@@ -4,10 +4,12 @@ import {OrderListItem} from '../order-list-item/order-list-item';
 import {APIService} from '../services/apiservice';
 import {OrderList} from '../order-list/order-list';
 import {FoodBanks} from '../Shared/Models/food-banks';
+import {BoldPipe} from '../pipes/bold-pipe';
 
 @Component({
   imports: [
-    OrderListItem
+    OrderListItem,
+    BoldPipe
   ],
   selector: 'app-taco-detail',
   styleUrl: './taco-detail.css',

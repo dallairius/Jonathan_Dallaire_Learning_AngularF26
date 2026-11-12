@@ -4,6 +4,8 @@ import {ContentEvent} from '../content-event';
 import {RouterLink} from '@angular/router';
 import {FoodBanks} from '../Shared/Models/food-banks';
 import {LowerCasePipe, SlicePipe, TitleCasePipe} from '@angular/common';
+import {PhonePipePipe} from '../pipes/phone-pipe-pipe';
+import {BoldPipe} from '../pipes/bold-pipe';
 
 
 
@@ -12,7 +14,9 @@ import {LowerCasePipe, SlicePipe, TitleCasePipe} from '@angular/common';
     RouterLink,
     TitleCasePipe,
     LowerCasePipe,
-    SlicePipe
+    SlicePipe,
+    PhonePipePipe,
+    BoldPipe
   ],
   selector: 'app-order-list-item',
   styleUrl: './order-list-item.css',
