@@ -16,8 +16,10 @@ import {BoldPipe} from '../pipes/bold-pipe';
   templateUrl: './taco-detail.html',
 })
 export class TacoDetail {
-  id = input.required<string>();
+  private openedTime = 0;
+  private dateOpened: any;
 
+  id = input.required<string>();
   private api = inject(APIService);
 
   foodBankList = signal<FoodBanks[]>([]);
@@ -33,6 +35,14 @@ export class TacoDetail {
         console.error(err);
       }
     })
+    // Performance.now returns time from browser window open instead of epoch
+    this.openedTime = performance.now()
+    this.dateOpened = new Date(Date.now());
+    console.log("[lifecycle] opened on "+this.dateOpened)
+  }
+  ngOnDestroy(){
+    const pageDuration = (performance.now()- this.openedTime)/1000;
+    console.log(`[lifecycle] Component was open for ${pageDuration.toFixed(2)} seconds`);
   }
 
   order = computed(() =>
