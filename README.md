@@ -1,5 +1,11 @@
 # JonathanDallaireLearningAngularF26
 
+When you read this.id() in the constructor the constructor doesn't know what to do because ID isn't set yet.
+The constructor builds the component and then receives the ID.
+
+ngOnDestroy runs when you leave a component. When that happens, the router destroys the component to give you the next one.
+
+
 I first made my project about taco orders because I taught there was a taco API but that API doesn't work very well.
 After looking around a little bit I found a Food Bank API that doesn't require any key and is pretty convenient to use.
 In the end I chose this API for convenience more than anything else.
