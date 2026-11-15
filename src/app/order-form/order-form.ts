@@ -1,4 +1,4 @@
-import {Component, computed, inject, input, signal} from '@angular/core';
+import {afterNextRender, Component, computed, ElementRef, inject, input, signal, viewChild} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -22,6 +22,14 @@ import {FoodBanks} from '../Shared/Models/food-banks';
 })
 export class OrderForm {
   id = input<string>();
+
+  firstInput = viewChild.required<ElementRef<HTMLInputElement>>('firstElement')
+  constructor(){
+    // In afterNextRender so it focuses the form after submit too.
+    afterNextRender(()=>{
+      this.firstInput().nativeElement.focus();
+    })
+  }
 
 
 
