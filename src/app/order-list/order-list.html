@@ -1,6 +1,6 @@
 <nav>
-  <button (click)="changeEdit()">Edit mode</button>
-  <button (click)="load()">Reload</button>
+  <button appHover="#b3e4fc" (click)="changeEdit()">Edit mode</button>
+  <button appHover="#b3e4fc" (click)="load()">Reload</button>
   @if(canEdit()){
     Edit mode On
   }@else{Edit mode Off}
@@ -12,9 +12,9 @@
 }@else{
 
 @for(FoodBank of foodBankList(); track FoodBank.id){
-  <app-order-list-item
+  <li appHover><app-order-list-item
     [orderInput] = "FoodBank"
-    (isRemoved)="onOrderRemoved($event)"/>
+    (isRemoved)="onOrderRemoved($event)"/></li>
 }@empty{
   no orders to show
 }

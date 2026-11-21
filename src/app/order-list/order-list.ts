@@ -7,13 +7,12 @@ import {RouterLink} from '@angular/router';
 import {Guard} from '../services/guard';
 import {APIService} from '../services/apiservice';
 import {FoodBanks} from '../Shared/Models/food-banks';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-
-
+import {NewDirective} from '../directives/new-directive';
 
 
 @Component({
   imports: [
+    NewDirective,
     OrderListItem,
     RouterLink
   ],
