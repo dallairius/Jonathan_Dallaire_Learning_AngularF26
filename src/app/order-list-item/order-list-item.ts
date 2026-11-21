@@ -6,6 +6,7 @@ import {FoodBanks} from '../Shared/Models/food-banks';
 import {LowerCasePipe, SlicePipe, TitleCasePipe} from '@angular/common';
 import {PhonePipePipe} from '../pipes/phone-pipe-pipe';
 import {BoldPipe} from '../pipes/bold-pipe';
+import {AppProtect} from '../directives/app-protect';
 
 
 
@@ -16,7 +17,8 @@ import {BoldPipe} from '../pipes/bold-pipe';
     LowerCasePipe,
     SlicePipe,
     PhonePipePipe,
-    BoldPipe
+    BoldPipe,
+    AppProtect
   ],
   selector: 'app-order-list-item',
   styleUrl: './order-list-item.css',
