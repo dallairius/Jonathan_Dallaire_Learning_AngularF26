@@ -1,5 +1,10 @@
 # JonathanDallaireLearningAngularF26
 
+Angular Material
+I choose the azure blue theme because it is soft and simple. I like the cohesion 
+and it fits my theme pretty well because foodbanks is a soft topic that requires 
+soft colors.
+
 localStorage
 I am storing a list of saved IDs in localStorage and the users light/dark mode
 This functions basically as a favorites list and the light mode just makes the users

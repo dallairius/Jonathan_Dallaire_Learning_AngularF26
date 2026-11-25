@@ -5,7 +5,7 @@ import {Directive, input, signal} from '@angular/core';
   host: {
     '(mouseenter)': 'hover.set(true)',
     '(mouseleave)': 'hover.set(false)',
-    '[style.backgroundColor]': "hover() ? (color() || '#DDDDDD') : ''"
+    '[style.backgroundColor]': "hover() ? (color() || 'var(--mat-sys-secondary-container)') : ''"
   }
 })
 export class NewDirective {
