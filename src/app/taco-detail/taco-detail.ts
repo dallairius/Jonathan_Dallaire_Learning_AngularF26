@@ -5,6 +5,7 @@ import {APIService} from '../services/apiservice';
 import {OrderList} from '../order-list/order-list';
 import {FoodBanks} from '../Shared/Models/food-banks';
 import {BoldPipe} from '../pipes/bold-pipe';
+import {SavedServices} from '../services/saved-services';
 
 @Component({
   imports: [
@@ -18,6 +19,8 @@ import {BoldPipe} from '../pipes/bold-pipe';
 export class TacoDetail {
   private openedTime = 0;
   private dateOpened: any;
+  private savedService = inject(SavedServices);
+  savedList = computed(() => this.savedService.savedIDs());
 
   id = input.required<string>();
   private api = inject(APIService);
@@ -43,6 +46,10 @@ export class TacoDetail {
   ngOnDestroy(){
     const pageDuration = (performance.now()- this.openedTime)/1000;
     console.log(`[lifecycle] Component was open for ${pageDuration.toFixed(2)} seconds`);
+  }
+
+  toggleSaved(){
+    this.savedService.toggleSaved(this.id());
   }
 
   order = computed(() =>

@@ -26,6 +26,7 @@ import {AppProtect} from '../directives/app-protect';
 })
 export class OrderListItem {
   orderInput = input.required<FoodBanks>();
+  savedList = input<boolean>();
   expanded = false;
   contentEvent: ContentEvent = {id:"0",action:"opened"};
   isRemoved = output<ContentEvent>();

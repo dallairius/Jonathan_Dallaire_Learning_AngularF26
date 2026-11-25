@@ -8,6 +8,7 @@ import {Guard} from '../services/guard';
 import {APIService} from '../services/apiservice';
 import {FoodBanks} from '../Shared/Models/food-banks';
 import {NewDirective} from '../directives/new-directive';
+import {SavedServices} from '../services/saved-services';
 
 
 @Component({
@@ -24,6 +25,10 @@ export class OrderList {
   private tacoService = inject(TacoService);
   private guard = inject(Guard);
   private api = inject(APIService);
+
+  private savedService = inject(SavedServices);
+  savedList = computed(() => this.savedService.savedIDs());
+  lightMode = computed(() => this.savedService.isLightMode())
 
   foodBankList = signal<FoodBanks[]>([]);
   errorMessage = signal<string>('');
@@ -77,6 +82,10 @@ export class OrderList {
 
   updateContent(updated: FoodBanks) {
     this.foodBankList.update(list => list.map(f => f.id === updated.id ? updated : f));
+  }
+
+  toggleLightMode(){
+    this.savedService.toggleLightMode();
   }
 
 

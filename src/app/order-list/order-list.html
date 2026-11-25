@@ -1,6 +1,13 @@
 <nav>
   <button appHover="#b3e4fc" (click)="changeEdit()">Edit mode</button>
   <button appHover="#b3e4fc" (click)="load()">Reload</button>
+
+  @if(lightMode()){
+    <button (click)="toggleLightMode()">Light Mode</button>
+  }@else{
+    <button (click)="toggleLightMode()">Dark Mode</button>
+  }
+
   @if(canEdit()){
     Edit mode On
   }@else{Edit mode Off}
@@ -11,7 +18,20 @@
   <p class ="error">Could not load food banks </p>
 }@else{
 
-@for(FoodBank of foodBankList(); track FoodBank.id){
+  <h3>Saved</h3>
+  @if(savedList().length == 0){
+    <p>No saved items</p>
+  }
+
+  @for(FoodBank of foodBankList(); track FoodBank.id){
+    @if(savedList().includes(FoodBank.id)){
+      <li appHover><app-order-list-item
+        [orderInput] = "FoodBank"
+        [savedList] = "true"/></li>
+    }
+  }
+  <h3>List of Food Banks</h3>
+  @for(FoodBank of foodBankList(); track FoodBank.id){
   <li appHover><app-order-list-item
     [orderInput] = "FoodBank"
     (isRemoved)="onOrderRemoved($event)"/></li>

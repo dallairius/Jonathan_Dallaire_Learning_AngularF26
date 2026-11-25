@@ -1,5 +1,10 @@
 # JonathanDallaireLearningAngularF26
 
+localStorage
+I am storing a list of saved IDs in localStorage and the users light/dark mode
+This functions basically as a favorites list and the light mode just makes the users
+experience slightly better. You must never store passwords in local storage.
+
 When you read this.id() in the constructor the constructor doesn't know what to do because ID isn't set yet.
 The constructor builds the component and then receives the ID.
 
