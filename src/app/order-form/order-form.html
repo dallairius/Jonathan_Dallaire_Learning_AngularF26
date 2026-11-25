@@ -1,40 +1,51 @@
 <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
 
-  @if(orderForm.controls.name.touched &&
-    orderForm.controls.name.invalid){
-    <p class="error">Name is required and
-      must have at least 4 characters</p>
-  }@else{<p>What is the name of the food bank ?</p>}
-  <input #firstElement formControlName="name" placeholder="Name" />
+  <mat-form-field>
+  <mat-error>Name is required and
+      must have at least 4 characters</mat-error>
+  <mat-label>What is the name of the food bank ?</mat-label>
+  <input matInput #firstElement formControlName="name" placeholder="Name" />
+  </mat-form-field>
+    <br>
+
+  <mat-form-field>
+    <mat-error>Please enter an address</mat-error>
+  <mat-label>What is the address of the food bank?</mat-label>
+  <input matInput formControlName="address" placeholder="1234 real street">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-error>Please enter a phone number</mat-error>
+    <mat-label>What is the phone number of the food bank?</mat-label>
+    <input matInput formControlName="phone" placeholder="(XXX) XXX-XXXX">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-error>Please enter email address</mat-error>
+    <mat-label>What is the email address of the food bank ?</mat-label>
+    <input matInput formControlName="email" placeholder="realemail@gmail.com">
+    <mat-hint>Right here ^^</mat-hint>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <mat-error>Select an option</mat-error>
+    <mat-label>What kind of establishment is it ?</mat-label>
+    <mat-select>
+      <mat-option value="FoodBank">Food Bank</mat-option>
+      <mat-option value="Soup">Soup Kitchen</mat-option>
+      <mat-option value="Church">Church</mat-option>
+    </mat-select>
+  </mat-form-field>
   <br>
 
 
-  @if(orderForm.controls.address.touched &&
-  orderForm.controls.address.invalid){
-    <p class="error">Please enter an address</p>
-  }@else{<p>What is the address of the food bank?</p>}
-  <input formControlName="address" placeholder="1234 real street">
-  <br>
-
-
-  @if(orderForm.controls.phone.touched &&
-  orderForm.controls.phone.invalid){
-    <p class="error">Please enter a phone number</p>
-  }@else{<p>What is the phone number of the food bank?</p>}
-  <input formControlName="phone" placeholder="(XXX) XXX-XXXX"/>
-  <br>
-
-
-  @if(orderForm.controls.email.touched &&
-  orderForm.controls.email.invalid){
-    <p class="error">Please enter email address</p>
-  }@else{<p>What is the email address of the food bank ?</p>}
-  <input formControlName="email" placeholder="realemail@gmail.com">
-  <br>
 
 @if(order){
-  <button type="submit" [disabled]="orderForm.invalid">Edit Order</button>
+  <button matButton="filled" type="submit" [disabled]="orderForm.invalid">Edit Order</button>
 }@else{
-  <button type="submit" [disabled]="orderForm.invalid">Add Order</button>
+  <button matButton="filled" type="submit" [disabled]="orderForm.invalid">Add Order</button>
   }
 </form>

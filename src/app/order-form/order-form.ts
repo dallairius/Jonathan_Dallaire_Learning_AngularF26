@@ -11,10 +11,21 @@ import {
 import {TacoService} from '../services/taco-service';
 import {APIService} from '../services/apiservice';
 import {FoodBanks} from '../Shared/Models/food-banks';
+import {MatError, MatFormField, MatHint, MatInput, MatLabel} from '@angular/material/input';
+import {MatOption, MatSelect} from '@angular/material/select';
+import {MatButton} from '@angular/material/button';
 
 @Component({
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatLabel,
+    MatInput,
+    MatError,
+    MatFormField,
+    MatSelect,
+    MatOption,
+    MatHint,
+    MatButton
   ],
   selector: 'app-order-form',
   styleUrl: './order-form.css',
