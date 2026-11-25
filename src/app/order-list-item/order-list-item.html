@@ -1,5 +1,8 @@
-<div>
-<h3>{{ orderInput().name | titlecase }}</h3>
+<mat-card appearance="outlined" appHover>
+
+  <mat-card-header>
+    <mat-card-title>{{ orderInput().name | titlecase }}</mat-card-title>
+  </mat-card-header>
 
   @if(expanded){
 
@@ -14,21 +17,26 @@
 
 
     <br>
+    <mat-card-actions>
+      <button matButton (click)="toggle()">Show Less</button>
+    </mat-card-actions>
+  }@else{
+    <mat-card-actions>
+      <button matButton (click)="toggle()">Expand</button>
 
-    <button (click)="toggle()">Show Less</button>
-
-  }@else{<button (click)="toggle()">Expand</button>}
-
-  @if(!savedList()){
-    <button
-      appProtect="Delete this item?"
-      (confirmed)="delete()"
-
-    >Remove</button>
+      @if(!savedList()){
+        <button matButton
+          appProtect="Delete this item?"
+          (confirmed)="delete()"
+        >Remove</button>
+      }
+    </mat-card-actions>
   }
 
 
-  <a [routerLink]="['/orders',orderInput().id]">Details</a>
-  <a [routerLink]="['/orderForm',orderInput().id]">Edit</a>
 
-</div>
+  <mat-card-actions>
+    <button matButton [routerLink]="['/orders',orderInput().id]">Details</button>
+    <button matButton [routerLink]="['/orderForm',orderInput().id]">Edit</button>
+  </mat-card-actions>
+</mat-card>

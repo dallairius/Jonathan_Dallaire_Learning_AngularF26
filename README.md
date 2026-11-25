@@ -1,5 +1,12 @@
 # JonathanDallaireLearningAngularF26
 
+List of material components
+1. matCard, for the orderListItems. It makes them look better.
+2. matButton, also for orderListItems. The buttons now look more modern.
+3. mat-progress-bar, in app.html. Makes the loading feel more fun and interactive.
+4. mat-slide-toggle, in orderList. Adds a slider for edit mode. 
+5. mat-checkbox, in orderList. Adds a checkbox for light mode
+
 Angular Material
 I choose the azure blue theme because it is soft and simple. I like the cohesion 
 and it fits my theme pretty well because foodbanks is a soft topic that requires 

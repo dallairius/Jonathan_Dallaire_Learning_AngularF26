@@ -9,13 +9,17 @@ import {APIService} from '../services/apiservice';
 import {FoodBanks} from '../Shared/Models/food-banks';
 import {NewDirective} from '../directives/new-directive';
 import {SavedServices} from '../services/saved-services';
+import {MatCheckbox} from '@angular/material/checkbox';
+import {MatSlideToggle} from '@angular/material/slide-toggle';
 
 
 @Component({
   imports: [
     NewDirective,
     OrderListItem,
-    RouterLink
+    RouterLink,
+    MatCheckbox,
+    MatSlideToggle
   ],
   selector: 'app-order-list',
   styleUrl: './order-list.css',

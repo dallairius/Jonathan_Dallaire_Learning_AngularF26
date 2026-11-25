@@ -4,9 +4,10 @@ import { Tacos } from './Shared/Models/tacos'
 import {OrderList} from './order-list/order-list';
 import {Guard} from './services/guard';
 import {LoadingService} from './services/loading-service';
+import {MatProgressBar} from '@angular/material/progress-bar';
 
 @Component({
-  imports: [RouterOutlet, OrderList],
+  imports: [RouterOutlet, OrderList, MatProgressBar],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

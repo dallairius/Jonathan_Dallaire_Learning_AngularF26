@@ -7,6 +7,9 @@ import {LowerCasePipe, SlicePipe, TitleCasePipe} from '@angular/common';
 import {PhonePipePipe} from '../pipes/phone-pipe-pipe';
 import {BoldPipe} from '../pipes/bold-pipe';
 import {AppProtect} from '../directives/app-protect';
+import {MatCard, MatCardActions, MatCardHeader, MatCardTitle} from '@angular/material/card';
+import {MatButton} from '@angular/material/button';
+import {NewDirective} from '../directives/new-directive';
 
 
 
@@ -18,7 +21,13 @@ import {AppProtect} from '../directives/app-protect';
     SlicePipe,
     PhonePipePipe,
     BoldPipe,
-    AppProtect
+    AppProtect,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardActions,
+    MatButton,
+    NewDirective
   ],
   selector: 'app-order-list-item',
   styleUrl: './order-list-item.css',

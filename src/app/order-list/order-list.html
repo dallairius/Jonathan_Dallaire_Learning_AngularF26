@@ -1,16 +1,9 @@
 <nav>
-  <button appHover="#b3e4fc" (click)="changeEdit()">Edit mode</button>
+  <p><mat-slide-toggle (change)="changeEdit()">Edit mode</mat-slide-toggle></p>
   <button appHover="#b3e4fc" (click)="load()">Reload</button>
 
-  @if(lightMode()){
-    <button (click)="toggleLightMode()">Light Mode</button>
-  }@else{
-    <button (click)="toggleLightMode()">Dark Mode</button>
-  }
-
-  @if(canEdit()){
-    Edit mode On
-  }@else{Edit mode Off}
+  <mat-checkbox (click)="toggleLightMode()">LightMode</mat-checkbox>
+  <br>
 </nav>
 @if(loading()){
   <p>Loading food banks...</p>
