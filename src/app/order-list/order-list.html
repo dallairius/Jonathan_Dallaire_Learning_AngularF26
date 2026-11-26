@@ -1,10 +1,30 @@
-<nav>
-  <p><mat-slide-toggle (change)="changeEdit()">Edit mode</mat-slide-toggle></p>
-  <button appHover="#b3e4fc" (click)="load()">Reload</button>
+<mat-sidenav-container>
+  <mat-sidenav #drawer mode="over">
+    <mat-nav-list (click)="drawer.close()">
 
-  <mat-checkbox (click)="toggleLightMode()">LightMode</mat-checkbox>
-  <br>
-</nav>
+      <p><mat-slide-toggle (change)="changeEdit()">Edit mode   </mat-slide-toggle></p>
+      <button matButton (click)="load()">Reload</button>
+      <mat-checkbox (click)="toggleLightMode()">LightMode</mat-checkbox>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      @if(isHandset()){
+        <button matIconButton aria-label="Open menu" (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+      }
+      @if(!isHandset()){
+        <mat-toolbar>
+          <p><mat-slide-toggle (change)="changeEdit()">Edit mode   </mat-slide-toggle></p>
+          <button matButton (click)="load()">Reload</button>
+
+          <mat-checkbox (click)="toggleLightMode()">LightMode</mat-checkbox>
+          <br>
+        </mat-toolbar>
+      }
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 @if(loading()){
   <p>Loading food banks...</p>
 }@else if(error()){

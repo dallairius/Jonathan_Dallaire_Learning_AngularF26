@@ -12,8 +12,15 @@ import {SavedServices} from '../services/saved-services';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {SlicePipe} from '@angular/common';
-import {MatButton} from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {MatToolbar} from '@angular/material/toolbar';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {map} from 'rxjs';
+import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
+import {MatNavList} from '@angular/material/list';
+import {MatIcon} from '@angular/material/icon';
 
 
 @Component({
@@ -25,7 +32,14 @@ import {MatPaginator, PageEvent} from '@angular/material/paginator';
     MatSlideToggle,
     SlicePipe,
     MatButton,
-    MatPaginator
+    MatPaginator,
+    MatToolbar,
+    MatSidenavContainer,
+    MatNavList,
+    MatSidenav,
+    MatSidenavContent,
+    MatIcon,
+    MatIconButton
   ],
   selector: 'app-order-list',
   styleUrl: './order-list.css',
@@ -47,6 +61,13 @@ export class OrderList {
 
   pageIndex = signal<number>(0);
   pageSize = signal<number>(10);
+
+  private breakpoints = inject(BreakpointObserver);
+
+  isHandset = toSignal(
+    this.breakpoints.observe(Breakpoints.Handset).pipe(map((r) => r.matches)),
+    { initialValue: false }
+  );
 
   ngOnInit(): void{
     this.load();
