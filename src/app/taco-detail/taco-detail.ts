@@ -6,11 +6,14 @@ import {OrderList} from '../order-list/order-list';
 import {FoodBanks} from '../Shared/Models/food-banks';
 import {BoldPipe} from '../pipes/bold-pipe';
 import {SavedServices} from '../services/saved-services';
+import {MatButton} from '@angular/material/button';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   imports: [
     OrderListItem,
-    BoldPipe
+    BoldPipe,
+    MatButton
   ],
   selector: 'app-taco-detail',
   styleUrl: './taco-detail.css',
@@ -27,6 +30,7 @@ export class TacoDetail {
 
   foodBankList = signal<FoodBanks[]>([]);
   errorMessage = signal<string>('');
+  private snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     this.api.getFoodBanks().subscribe({
@@ -50,6 +54,11 @@ export class TacoDetail {
 
   toggleSaved(){
     this.savedService.toggleSaved(this.id());
+    if(!this.savedService.isSaved(this.id())){
+      this.snackBar.open('item unsaved', 'OK', { duration: 2000});
+    }else{
+      this.snackBar.open('item saved', 'OK', { duration: 2000});
+    }
   }
 
   order = computed(() =>
