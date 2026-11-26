@@ -1,5 +1,10 @@
 # JonathanDallaireLearningAngularF26
 
+Paginator
+For the paginator I chose the client side approach because I couldn't find how 
+to use the API page settings. I feel like There is one and I just didn't find it
+but client side works well and was easy to implement.
+
 List of material components
 1. matCard, for the orderListItems. It makes them look better.
 2. matButton, also for orderListItems. The buttons now look more modern.

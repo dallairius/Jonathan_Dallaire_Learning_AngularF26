@@ -24,13 +24,19 @@
     }
   }
   <h3>List of Food Banks</h3>
-  @for(FoodBank of foodBankList(); track FoodBank.id){
+  @for(FoodBank of foodBankList()  | slice:(pageIndex()*pageSize()):((pageIndex()+1)*pageSize()) ; track FoodBank.id){
   <li appHover><app-order-list-item
     [orderInput] = "FoodBank"
     (isRemoved)="onOrderRemoved($event)"/></li>
 }@empty{
   no orders to show
 }
-<a [routerLink]="['/orderForm']">Add New Order</a>
-<p>Api Test Url: {{apiTest}}</p>
+<a matButton [routerLink]="['/orderForm']">Add New Order</a>
+
+  <mat-paginator [length]="foodBankList().length"
+  [pageSize]="10"
+  [pageSizeOptions]="[5,10,25,100]"
+  aria-label="Select page"
+  (page)="onPageChange($event)">
+  </mat-paginator>
 }

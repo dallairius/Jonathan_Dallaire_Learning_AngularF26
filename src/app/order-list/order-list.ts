@@ -11,6 +11,9 @@ import {NewDirective} from '../directives/new-directive';
 import {SavedServices} from '../services/saved-services';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
+import {SlicePipe} from '@angular/common';
+import {MatButton} from '@angular/material/button';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 
 
 @Component({
@@ -19,7 +22,10 @@ import {MatSlideToggle} from '@angular/material/slide-toggle';
     OrderListItem,
     RouterLink,
     MatCheckbox,
-    MatSlideToggle
+    MatSlideToggle,
+    SlicePipe,
+    MatButton,
+    MatPaginator
   ],
   selector: 'app-order-list',
   styleUrl: './order-list.css',
@@ -38,6 +44,9 @@ export class OrderList {
   errorMessage = signal<string>('');
   loading = signal(false);
   error = signal<string | null>(null);
+
+  pageIndex = signal<number>(0);
+  pageSize = signal<number>(10);
 
   ngOnInit(): void{
     this.load();
@@ -92,11 +101,15 @@ export class OrderList {
     this.savedService.toggleLightMode();
   }
 
-
-
   changeEdit(){
     this.guard.onClick()
     console.log(this.guard.guardEnabled())
+  }
+
+  onPageChange(event: PageEvent): void{
+    this.pageIndex.set(event.pageIndex);
+    this.pageSize.set(event.pageSize);
+    console.log(event.pageSize);
   }
 
 
